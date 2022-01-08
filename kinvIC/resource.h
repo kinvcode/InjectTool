@@ -5,7 +5,6 @@
 #define IDD_KINVIC_DIALOG               102
 #define IDR_MAINFRAME                   128
 #define IDC_LIST_PROCESS                1005
-#define IDC_EDIT2                       1006
 #define IDC_EDIT_ASSEMBLY_CODE          1006
 #define IDC_BUTTON_INJECT_CODE          1007
 #define IDC_BUTTON_RESUME_THREAD        1008

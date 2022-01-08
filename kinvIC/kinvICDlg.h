@@ -57,4 +57,5 @@ public:
 	BOOL Assembly2ByteBuffer(AseemblyByte& container);
 	void injectDll(HANDLE handle);
 	void injectCode(HANDLE handle, AseemblyByte& container);
+	afx_msg void OnBnClickedButtonInjectDll();
 };

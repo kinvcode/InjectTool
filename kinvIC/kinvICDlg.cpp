@@ -44,6 +44,7 @@ BEGIN_MESSAGE_MAP(CkinvICDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_NOTIFY(NM_CLICK, IDC_LIST_PROCESS, &CkinvICDlg::OnNMClickListProcess)
 	ON_BN_CLICKED(IDC_BUTTON_INJECT_CODE, &CkinvICDlg::OnBnClickedButtonInjectCode)
+	ON_BN_CLICKED(IDC_BUTTON_INJECT_DLL, &CkinvICDlg::OnBnClickedButtonInjectDll)
 END_MESSAGE_MAP()
 
 
@@ -212,7 +213,7 @@ void CkinvICDlg::injectCode(HANDLE handle, AseemblyByte& funData)
 }
 
 // 汇编转字节数组
-BOOL CkinvICDlg::Assembly2ByteBuffer(AseemblyByte &directContainer)
+BOOL CkinvICDlg::Assembly2ByteBuffer(AseemblyByte& directContainer)
 {
 	// 每行限制字符250
 	int i, nLineCount = m_assembly_code.GetLineCount();
@@ -251,8 +252,8 @@ void CkinvICDlg::OnBnClickedButtonInjectCode()
 {
 	// 转机器指令
 	AseemblyByte directContainer;
-	BOOL format_res =  Assembly2ByteBuffer(directContainer);
-	if (!format_res) 
+	BOOL format_res = Assembly2ByteBuffer(directContainer);
+	if (!format_res)
 	{
 		return;
 	}
@@ -263,5 +264,18 @@ void CkinvICDlg::OnBnClickedButtonInjectCode()
 	if (process_handle != NULL)
 	{
 		injectCode(process_handle, directContainer);
+	}
+}
+
+
+void CkinvICDlg::OnBnClickedButtonInjectDll()
+{
+	TCHAR szFilters[] = _T("DLL File (*.dll)|*.dll|");
+
+	CFileDialog fileDlg(TRUE, _T("dll"), _T("*.dll"), OFN_FILEMUSTEXIST | OFN_HIDEREADONLY, szFilters);
+
+	if (fileDlg.DoModal() == IDOK)
+	{
+		CString pathName = fileDlg.GetPathName();
 	}
 }
