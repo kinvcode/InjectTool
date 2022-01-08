@@ -1,0 +1,6 @@
+!.gitignore
+Debug/
+x64/
+/kinvIC/Debug/
+//kinvIC/x64/
+/.vs
