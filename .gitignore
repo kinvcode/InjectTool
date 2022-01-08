@@ -4,3 +4,5 @@ x64/
 /kinvIC/Debug/
 //kinvIC/x64/
 /.vs
+/Release
+/kinvIC/Release

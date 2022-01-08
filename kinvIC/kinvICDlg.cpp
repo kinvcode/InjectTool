@@ -198,19 +198,14 @@ void CkinvICDlg::injectCode(HANDLE handle, AseemblyByte& funData)
 		}
 
 		HANDLE thread_handle = CreateRemoteThread(handle, NULL, 0, (LPTHREAD_START_ROUTINE)funAddr, NULL, 0, NULL);
+		Sleep(500);
 		if (thread_handle == NULL)
 		{
 			MessageBox(L"创建线程失败！");
 			return;
 		}
 
-		//BOOL res = TerminateThread(thread_handle,);
-
-
-		if (VirtualFreeEx(handle, funAddr, 0, MEM_RELEASE) != 0)
-		{
-			MessageBox(L"内存已释放");
-		}
+		VirtualFreeEx(handle, funAddr, 0, MEM_RELEASE);
 	}
 	delete[] ThreadFunc;
 	funData.clear();
